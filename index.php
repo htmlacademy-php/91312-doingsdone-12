@@ -122,15 +122,10 @@ $doings = [
                     </label>
                 </div>                
                 <table class="tasks">
-                <?php  foreach ($doings as $doing): ?>
-                
-                      <tr class="tasks__item task"> 
-                      <?php if ($doing['status'] === 'true'):?>
-                        <tr class="task--completed"> 
-                        <?php endif; ?>   
-
-                        <?php if ($doing['status'] === 'true' && $show_complete_tasks == 0): continue?>
-
+                <?php  foreach ($doings as $doing): ?>      
+<?php if ($doing['status'] === 'true' && $show_complete_tasks == 0): continue; endif; ?>            
+<tr class="tasks__item task
+<?php if ($doing['status'] === 'true'): echo 'task--completed'; endif;?>">
                         <td class="task__select">
                             <label class="checkbox task__checkbox">
                                 <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">
@@ -141,9 +136,7 @@ $doings = [
                             <a class="download-link" href="#">Home.psd</a>
                         </td> 
                         <td class="task__date"><?= $doing['date'] ?></td>
-                    </tr>                    
-                    <?php endif; ?>
-
+                    </tr>                                      
                     <?php endforeach; ?>
  <!--показывать следующий тег <tr/>, если переменная $show_complete_tasks равна единице-->
                     <?php if ($show_complete_tasks == 1): ?> 
