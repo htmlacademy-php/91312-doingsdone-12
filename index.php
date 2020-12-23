@@ -98,6 +98,7 @@ $doings = [
                         <li class="main-navigation__list-item">
                         	
                             <a class="main-navigation__list-item-link" href="#"><?= $task ?></a>
+
                             <span class="main-navigation__list-item-count"><?= сategoryCount($doings, $task) ?></span>
 
                         </li>
@@ -133,6 +134,7 @@ $doings = [
                     </label>
                 </div>                
                 <table class="tasks">
+
 <?php  foreach ($doings as $doing): ?>      
 <?php if ($doing['status'] === 'true' && $show_complete_tasks == 0): continue; endif; ?>            
 <tr class="tasks__item task <?= $doing['status'] === 'true' ? 'task--completed' : '';?>">
@@ -148,6 +150,7 @@ $doings = [
 <td class="task__date"><?= $doing['date'] ?></td>
 </tr>                                             
 <?php endforeach; ?>
+
  <!--показывать следующий тег <tr/>, если переменная $show_complete_tasks равна единице-->
                     <?php if ($show_complete_tasks == 1): ?> 
                     	 <tr class="tasks__item task task--completed">
