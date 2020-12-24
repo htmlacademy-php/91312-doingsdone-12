@@ -40,6 +40,17 @@ $doings = [
        'status' => 'false'
       ]
    ];
+
+   function сategoryCount(array $task_list, $name_project) {
+    $count = 0;
+    foreach ($task_list as $task) {
+        if (isset($task['сategory']) && $task['сategory'] === $name_project) {
+            $count++;
+        }
+    }
+    return $count;
+}
+
 ?>
 
 
@@ -87,7 +98,8 @@ $doings = [
                         <li class="main-navigation__list-item">
                         	
                             <a class="main-navigation__list-item-link" href="#"><?= $task ?></a>
-                            <span class="main-navigation__list-item-count">0</span>
+
+                            <span class="main-navigation__list-item-count"><?= сategoryCount($doings, $task) ?></span>
 
                         </li>
                          <?php endforeach;?>
@@ -122,22 +134,23 @@ $doings = [
                     </label>
                 </div>                
                 <table class="tasks">
-                <?php  foreach ($doings as $doing): ?>      
+
+<?php  foreach ($doings as $doing): ?>      
 <?php if ($doing['status'] === 'true' && $show_complete_tasks == 0): continue; endif; ?>            
-<tr class="tasks__item task
-<?php if ($doing['status'] === 'true'): echo 'task--completed'; endif;?>">
-                        <td class="task__select">
-                            <label class="checkbox task__checkbox">
-                                <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">
-                                <span class="checkbox__text"><?= $doing['task'] ?></span>
-                            </label>
-                        </td>                        
-                        <td class="task__file">
-                            <a class="download-link" href="#">Home.psd</a>
-                        </td> 
-                        <td class="task__date"><?= $doing['date'] ?></td>
-                    </tr>                                      
-                    <?php endforeach; ?>
+<tr class="tasks__item task <?= $doing['status'] === 'true' ? 'task--completed' : '';?>">
+<td class="task__select">
+<label class="checkbox task__checkbox">
+<input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">
+<span class="checkbox__text"><?= $doing['task'] ?></span>
+</label>
+</td>                        
+<td class="task__file">
+<a class="download-link" href="#">Home.psd</a>
+</td> 
+<td class="task__date"><?= $doing['date'] ?></td>
+</tr>                                             
+<?php endforeach; ?>
+
  <!--показывать следующий тег <tr/>, если переменная $show_complete_tasks равна единице-->
                     <?php if ($show_complete_tasks == 1): ?> 
                     	 <tr class="tasks__item task task--completed">
