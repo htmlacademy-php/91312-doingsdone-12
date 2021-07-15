@@ -1,11 +1,11 @@
 <?php
-
-$page_content = include_template('/temlates/main.php', ['projects' => $projects, 'tasks' => $tasks, 'show_complete_tasks' => $show_complete_tasks]);
+require_once('helpers.php');
+$page_content = include_template('/temlates/main.php', ['projects' => $doings, 'tasks' => $tasks, 'show_complete_tasks' => $show_complete_tasks]);
 $layout_content = include_template('/temlates/layout.php', ['content' => $page_content, 'title' => 'Дела в порядке']);
 print($layout_content);
 
-require_once('/temlates/layout.php');
-require_once('/temlates/main.php');
+require_once('temlates/layout.php');
+require_once('temlates/main.php');
 // показывать или нет выполненные задачи
 
 
@@ -23,9 +23,3 @@ require_once('/temlates/main.php');
 ?>
 
 
-
-
-
-
-
-?>
