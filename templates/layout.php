@@ -1,20 +1,16 @@
-<?php
-
-include('main.php');
-?>
 <!DOCTYPE html>
 <html lang="ru">
 
 <head>
     <meta charset="UTF-8">
-    <title>Дела в порядке</title>
+    <title><?= $title; ?></title>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/flatpickr.min.css">
 </head>
 
 <body>
-<h1 class="visually-hidden">$title</h1>
+<h1 class="visually-hidden">Дела в порядке</h1>
 
 <div class="page-wrapper">
     <div class="container container--with-sidebar">
@@ -35,7 +31,7 @@ include('main.php');
                 </div>
             </div>
         </header>
-        <?php $main ?>
+        <div class="content"><?= $content; ?></div>
 
     </div>
 </div>
