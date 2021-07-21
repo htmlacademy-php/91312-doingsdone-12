@@ -1,11 +1,15 @@
 <?php
-require_once('helpers.php');
-$page_content = include_template('/temlates/main.php', ['projects' => $doings, 'tasks' => $tasks, 'show_complete_tasks' => $show_complete_tasks]);
-$layout_content = include_template('/temlates/layout.php', ['content' => $page_content, 'title' => 'Дела в порядке']);
+$title = 'Дела в порядке';
+include('templates/layout.php');
+include('templates/main.php');
+include('helpers.php');
+$content = include_template('main.php', ['projects' => $doings, 'tasks' => $tasks, 'show_complete_tasks' => $show_complete_tasks]);
+$layout_content = include_template('layout.php', ['content' => $content, 'title' => 'Главная']);
 print($layout_content);
 
-require_once('temlates/layout.php');
-require_once('temlates/main.php');
+
+
+
 // показывать или нет выполненные задачи
 
 
