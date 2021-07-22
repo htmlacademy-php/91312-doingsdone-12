@@ -1,4 +1,3 @@
-
 <div class="content">
     <section class="content__side">
         <h2 class="content__side-heading">Проекты</h2>
@@ -7,16 +6,12 @@
             <ul class="main-navigation__list">
                 <?php  foreach ($tasks as $task): ?>
                     <li class="main-navigation__list-item">
-
-                        <a class="main-navigation__list-item-link" href="#"><?= $task ?></a>
-
-                        <span class="main-navigation__list-item-count"><?= сategoryCount($doings, $task) ?></span>
-
+                    <a class="main-navigation__list-item-link" href="#"><?= $task ?></a>
+                    <span class="main-navigation__list-item-count"><?= сategoryCount($doings, $task) ?></span>
                     </li>
                 <?php endforeach;?>
             </ul>
         </nav>
-
         <a class="button button--transparent button--plus content__side-button"
            href="pages/form-project.html" target="project_add">Добавить проект</a>
     </section>
@@ -45,7 +40,6 @@
             </label>
         </div>
         <table class="tasks">
-
             <?php  foreach ($doings as $doing): ?>
                 <?php if ($doing['status'] === 'true' && $show_complete_tasks == 0): continue; endif; ?>
                 <tr class="tasks__item task <?= $doing['status'] === 'true' ? 'task--completed' : '';?>">
@@ -61,7 +55,6 @@
                     <td class="task__date"><?= $doing['date'] ?></td>
                 </tr>
             <?php endforeach; ?>
-
             <!--показывать следующий тег <tr/>, если переменная $show_complete_tasks равна единице-->
             <?php if ($show_complete_tasks == 1): ?>
                 <tr class="tasks__item task task--completed">

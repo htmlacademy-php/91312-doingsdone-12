@@ -1,7 +1,3 @@
-<?php
-
-include('templates/main.php');
-?>
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -15,7 +11,6 @@ include('templates/main.php');
 
 <body>
 <h1 class="visually-hidden">$title</h1>
-
 <div class="page-wrapper">
     <div class="container container--with-sidebar">
         <header class="main-header">
@@ -35,11 +30,9 @@ include('templates/main.php');
                 </div>
             </div>
         </header>
-        <?php $main ?>
-
+        <div class="content"><?= $main; ?></div>
     </div>
 </div>
-
 <footer class="main-footer">
     <div class="container">
         <div class="main-footer__copyright">
