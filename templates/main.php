@@ -6,7 +6,7 @@
             <ul class="main-navigation__list">
                 <?php  foreach ($tasks as $task): ?>
                     <li class="main-navigation__list-item">
-                    <a class="main-navigation__list-item-link" href="#"><?= $task ?></a>
+                    <a class="main-navigation__list-item-link" href="#"><?= htmlspecialchars($task); ?></a>
                     <span class="main-navigation__list-item-count"><?= сategoryCount($doings, $task) ?></span>
                     </li>
                 <?php endforeach;?>
@@ -46,13 +46,13 @@
                     <td class="task__select">
                         <label class="checkbox task__checkbox">
                             <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">
-                            <span class="checkbox__text"><?= $doing['task'] ?></span>
+                            <span class="checkbox__text"><?= htmlspecialchars($doing['task']); ?></span>
                         </label>
                     </td>
                     <td class="task__file">
                         <a class="download-link" href="#">Home.psd</a>
                     </td>
-                    <td class="task__date"><?= $doing['date'] ?></td>
+                    <td class="task__date"><?= htmlspecialchars($doing['date']); ?></td>
                 </tr>
             <?php endforeach; ?>
             <!--показывать следующий тег <tr/>, если переменная $show_complete_tasks равна единице-->
