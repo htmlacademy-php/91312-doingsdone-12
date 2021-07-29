@@ -43,6 +43,8 @@
             <?php  foreach ($doings as $doing): ?>
                 <?php if ($doing['status'] === 'true' && $show_complete_tasks == 0): continue; endif; ?>
                 <tr class="tasks__item task <?= $doing['status'] === 'true' ? 'task--completed' : '';?>">
+
+                    <? echo ($doing['status'] !== true && get_date_diff($doing['date']) <= $quantity_hours_in_day) ? 'task--important' : '' ?>
                     <td class="task__select">
                         <label class="checkbox task__checkbox">
                             <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">
@@ -68,8 +70,10 @@
                     <td class="task__controls"></td>
                 </tr>
 
-            <?php endif; ?>
+
         </table>
+
+        <?php endif; ?>
     </main>
 </div>
 
