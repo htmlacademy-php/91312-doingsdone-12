@@ -39,25 +39,27 @@
                 <span class="checkbox__text">Показывать выполненные</span>
             </label>
         </div>
-        <table class="tasks">
-            <?php  foreach ($doings as $doing): ?>
-                <?php if ($doing['status'] === 'true' && $show_complete_tasks == 0): continue; endif; ?>
-                <tr class="tasks__item task <?= $doing['status'] === 'true' ? 'task--completed' : '';?>">
-
-                    <? echo ($doing['status'] !== true && get_date_diff($doing['date']) <= $quantity_hours_in_day) ? 'task--important' : '' ?>
-                    <td class="task__select">
-                        <label class="checkbox task__checkbox">
-                            <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">
-                            <span class="checkbox__text"><?= htmlspecialchars($doing['task']); ?></span>
-                        </label>
-                    </td>
-                    <td class="task__file">
-                        <a class="download-link" href="#">Home.psd</a>
-                    </td>
-                    <td class="task__date"><?= htmlspecialchars($doing['date']); ?></td>
-                </tr>
-            <?php endforeach; ?>
-            <!--показывать следующий тег <tr/>, если переменная $show_complete_tasks равна единице-->
+ <table class="tasks">
+<?php
+foreach ($doings as $doing) {
+if ($doing['status'] === true && $show_complete_tasks == 0) {
+continue;
+}
+?>
+<tr class="tasks__item task <? echo ($doing['status'] == true && $show_complete_tasks == 1) ? 'task--completed' : ''  ?>
+<? echo ($doing['status'] !== true && $doing['date'] !== null && get_date_difference($task['date']) <= $quantity_hours_in_day) ? 'task--important' : '' ?>">
+<td class="task__select">
+<label class="checkbox task__checkbox">
+<input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">
+<span class="checkbox__text"><?= htmlspecialchars($doing['task']); ?></span>
+</label>
+</td>
+<td class="task__file">
+<a class="download-link" href="#">Home.psd</a>
+</td>
+<td class="task__date"><?= htmlspecialchars($doing['date']); ?></td>
+</tr>
+<?php } ?> <!--показывать следующий тег <tr/>, если переменная $show_complete_tasks равна единице-->
             <?php if ($show_complete_tasks == 1): ?>
                 <tr class="tasks__item task task--completed">
                     <td class="task__select">
@@ -69,9 +71,7 @@
                     <td class="task__date">10.10.2019</td>
                     <td class="task__controls"></td>
                 </tr>
-
-
-        </table>
+ </table>
 
         <?php endif; ?>
     </main>
