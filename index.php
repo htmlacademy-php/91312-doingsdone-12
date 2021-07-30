@@ -1,6 +1,7 @@
 <?php
 
-require_once('helpers.php');
+require_once 'helpers.php';
+require_once 'functions.php';
 $quantity_hours_in_day = 24;
 
 // показывать или нет выполненные задачи
@@ -9,7 +10,7 @@ $tasks = ['Входящие', 'Учеба', 'Работа', 'Домашние д
 $doings = [
     [
         'task' => 'Собеседование в IT компании',
-        'date' => '30.07.2021',
+        'date' => '30.08.2021',
         'сategory' => 'Работа',
         'status' => false
     ],
@@ -45,25 +46,24 @@ $doings = [
     ]
 ];
 
-function сategoryCount(array $task_list, $name_project)
-{
-    $count = 0;
-    foreach ($task_list as $task) {
-        if (isset($task['сategory']) && $task['сategory'] === $name_project) {
-            $count++;
-        }
-    }
-    return $count;
-}
+$doings = prepare_for_template($doings, $quantity_hours_in_day);
+/**
+ [
+'task' => 'Заказать пиццу',
+'date' => null,
+'сategory' => 'Домашние дела',
+'status' => false,
+ 'important' => true
+]
+ */
 
-
-$main = include_template('main.php',
-                         [
-                             'tasks' => $tasks,
-                             'doings' => $doings,
-                             'show_complete_tasks' => $show_complete_tasks,
-                             'quantity_hours_in_day' => $quantity_hours_in_day
-                         ]
+$main = include_template(
+    'main.php',
+    [
+        'tasks' => $tasks,
+        'doings' => $doings,
+        'show_complete_tasks' => $show_complete_tasks
+    ]
 );
 print include_template('layout.php', ['main' => $main]);
 
