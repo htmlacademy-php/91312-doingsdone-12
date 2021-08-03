@@ -27,10 +27,9 @@ function сategoryCount(array $task_list, $name_project)
 
 function prepare_for_template($doings, $quantity_hours_in_day)
 {
-    
+    $result = [];
     foreach ($doings as $doing)
-    {
-        $result = [];
+    {        
         $item = $doing;
        [$remainHours, $remainMinutes, $remainSeconds] = get_date_difference($doing['date']);
         $item['is_important'] = ($remainHours < $quantity_hours_in_day);
@@ -38,9 +37,6 @@ function prepare_for_template($doings, $quantity_hours_in_day)
     }
     return $result;
 };
-
-
-
 
 
 
