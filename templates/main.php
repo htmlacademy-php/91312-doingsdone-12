@@ -4,6 +4,7 @@
  * @var $tasks
  * @var $doings
  */
+
 ?>
 <div class="content">
     <section class="content__side">
@@ -11,12 +12,14 @@
 
         <nav class="main-navigation">
             <ul class="main-navigation__list">
-                <?php foreach ($tasks as $task): ?>
+                <?php
+                foreach ($tasks as $task): ?>
                     <li class="main-navigation__list-item">
                         <a class="main-navigation__list-item-link" href="#"><?= htmlspecialchars($task); ?></a>
                         <span class="main-navigation__list-item-count"><?= сategoryCount($doings, $task) ?></span>
                     </li>
-                <?php endforeach; ?>
+                <?php
+                endforeach; ?>
 
             </ul>
         </nav>
@@ -43,17 +46,25 @@
 
             <label class="checkbox">
                 <!--добавить сюда атрибут "checked", если переменная $show_complete_tasks равна единице-->
-                <input class="checkbox__input visually-hidden show_completed" type="checkbox" <?php if ($show_complete_tasks == 1): ?> checked <?php endif; ?> >
-            <span class="checkbox__text">Показывать выполненные</span>
+                <input class="checkbox__input visually-hidden show_completed" type="checkbox" <?php
+                if ($show_complete_tasks == 1): ?> checked <?php
+                endif; ?> >
+                <span class="checkbox__text">Показывать выполненные</span>
             </label>
         </div>
         <table class="tasks">
-            <?php foreach ($doings as $doing): ?>
-            <?php if ($doing['status'] && !$show_complete_tasks) { continue; } ?>
-            <?php $taskCompletedClass = ($doing['status'] && $show_complete_tasks) ? 'task--completed' : '' ?>
-            <?php $taskImportantClass = (!$doing['status'] && $doing['is_important']) ? 'task--important' : '' ?>
+            <?php
+            foreach ($doings as $doing): ?>
+                <?php
+                if ($doing['status'] && !$show_complete_tasks) {
+                    continue;
+                } ?>
+                <?php
+                $taskCompletedClass = ($doing['status'] && $show_complete_tasks) ? 'task--completed' : '' ?>
+                <?php
+                $taskImportantClass = (!$doing['status'] && $doing['is_important']) ? 'task--important' : '' ?>
                 <tr class="tasks__item task <?= $taskCompletedClass ?> <?= $taskImportantClass ?>">
-                <td class="task__select">
+                    <td class="task__select">
                         <label class="checkbox task__checkbox">
                             <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">
                             <span class="checkbox__text"><?= htmlspecialchars($doing['task']); ?></span>
@@ -64,8 +75,8 @@
                     </td>
                     <td class="task__date"><?= htmlspecialchars($doing['date']); ?></td>
                 </tr>
-            <?php endforeach ?>
+            <?php
+            endforeach ?>
         </table>
     </main>
 </div>
-

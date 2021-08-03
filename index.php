@@ -1,8 +1,8 @@
 <?php
+
 require_once 'helpers.php';
 require_once 'functions.php';
-$quantity_hours_in_day = 24;
-
+$time_before_expiration = 24;
 // показывать или нет выполненные задачи
 $show_complete_tasks = rand(0, 1);
 $tasks = ['Входящие', 'Учеба', 'Работа', 'Домашние дела', 'Авто'];
@@ -44,21 +44,14 @@ $doings = [
         'status' => false
     ]
 ];
-
-$doings = prepare_for_template($doings, $quantity_hours_in_day);
-
-
-$main = include_template('main.php',
-                         [
-                             'tasks' => $tasks,
-                             'doings' => $doings,
-                             'show_complete_tasks' => $show_complete_tasks
-                         ]
+$doings = prepare_for_template($doings, $time_before_expiration);
+$main = include_template(
+    'main.php',
+    [
+        'tasks' => $tasks,
+        'doings' => $doings,
+        'show_complete_tasks' => $show_complete_tasks
+    ]
 );
-
 print include_template('layout.php', ['main' => $main]);
-
 ?>
-
-
-
