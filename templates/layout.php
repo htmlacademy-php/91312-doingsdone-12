@@ -10,8 +10,10 @@
 </head>
 
 <body>
-<h1 class="visually-hidden">$title</h1>
+<h1 class="visually-hidden"><?
+    $title ?></h1>
 <div class="page-wrapper">
+
     <div class="container container--with-sidebar">
         <header class="main-header">
             <a href="/">
@@ -19,7 +21,8 @@
             </a>
 
             <div class="main-header__side">
-                <a class="main-header__side-item button button--plus open-modal" href="pages/form-task.html">Добавить задачу</a>
+                <a class="main-header__side-item button button--plus open-modal" href="pages/form-task.html">Добавить
+                    задачу</a>
 
                 <div class="main-header__side-item user-menu">
                     <div class="user-menu__data">
@@ -96,4 +99,3 @@
 <script src="script.js"></script>
 </body>
 </html>
-
