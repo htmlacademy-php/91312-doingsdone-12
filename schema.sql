@@ -3,8 +3,7 @@ CREATE DATABASE doingsdone_db
     DEFAULT COLLATE utf8_general_ci;
 USE doingsdone_db;
 CREATE TABLE users (
-    CREATE UNIQUE INDEX uk_email (email),
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    CREATE INDEX VARCHAR(128) uk_email (email),
     name VARCHAR(128) NOT NULL,
     email VARCHAR(128) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
