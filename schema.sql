@@ -3,7 +3,7 @@ CREATE DATABASE doingsdone_db
     DEFAULT COLLATE utf8_general_ci;
 USE doingsdone_db;
 CREATE TABLE users (
-    CREATE INDEX VARCHAR(128) uk_email (email),
+    CREATE INDEX (128) uk_email (email),
     name VARCHAR(128) NOT NULL,
     email VARCHAR(128) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
@@ -34,9 +34,3 @@ CREATE TABLE tasks (
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMP NOT NULL DEFAULT NOW() ON UPDATE now()
 );
-CREATE INDEX search_by_name
-ON users (name);
-CREATE INDEX search_by_projects
-ON projects (title);
-CREATE INDEX search_by_tasks
-ON tasks (title);
