@@ -1,6 +1,10 @@
-INSERT INTO users (uk_email, name, password, created_at) VALUES ('a.hachunc@gmail.com', 'Артём', '1234', '2021-10-17 22:57:12'),('htmlacademy@gmail.com','Кот','54321','2021-10-17 22:57:12');
-INSERT INTO projects (id, title) VALUES (1, 'Входящие'), (1, 'Учеба'), (1, 'Работа'), (1, 'Домашние дела'), (1, 'Авто');
-INSERT INTO tasks (id, title, name, date_add, date_term, status)
+INSERT INTO users (email, title, password, created_at) 
+VALUES ('a.hachunc@gmail.com', 'Артём', '1234', '2021-10-17 22:57:12'),
+('htmlacademy@gmail.com','Кот','54321','2021-10-17 22:57:12');
+INSERT INTO projects (id, title) 
+VALUES (1, 'Входящие'), (1, 'Учеба'), 
+(1, 'Работа'), (1, 'Домашние дела'), (1, 'Авто');
+INSERT INTO tasks (id, title, title, created_at, updated_at, status)
 VALUES (1, 3, 'Собеседование в IT компании', '2021-08-03 23:59:00', '2021-08-03 23:59:00', 0),
        (1, 3, 'Выполнить тестовое задание', '2021-08-03 23:59:00', '2021-08-03 23:59:00', 0),
        (1, 2, 'Сделать задание первого раздела', '2021-08-03 23:59:00', '2021-08-03 23:59:00', 0),
@@ -11,4 +15,4 @@ VALUES (1, 3, 'Собеседование в IT компании', '2021-08-03 2
 SELECT * FROM projects WHERE id = 1;
 SELECT * FROM tasks WHERE title = 3;
 UPDATE tasks SET status='1' WHERE id = 1;
-UPDATE tasks SET name = 'Сделать задачу' WHERE id = 1;
+UPDATE tasks SET title = 'Сделать задачу' WHERE id = 1;
